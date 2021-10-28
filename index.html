@@ -1,0 +1,563 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrics Calculater</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        #resultcontainer {
+            display: none;
+            justify-content: center;
+        }
+
+        #matricsdiv {
+            display: none;
+            justify-content: center;
+        }
+
+        #matricsdiv2 {
+            display: none;
+            justify-content: center;
+        }
+        #matricsdiv3 {
+            display: flex;
+            justify-content: center;
+        }
+        #optioncontainer {
+            display: block;
+            justify-content: center;
+        }
+
+        #resultcontainer2 {
+            display: none;
+            justify-content: center;
+        }
+
+        #matricsbtn {
+            display: none;
+            justify-content: center;
+        }
+
+        #resultbtn {
+            display: none;
+            justify-content: center;
+        }
+
+        #header {
+            width: 100%;
+            background-color: blue;
+            font-size: 32px;
+            height: 40px;
+            color: rgb(83, 128, 0);
+            display: block;
+       
+        }
+
+        .span {
+            border: 0px solid black;
+            padding-left: 20px;
+            color: red;
+            font-size: 30px;
+            width: 100%;
+            display: block;
+        }
+
+        .span:hover {
+            background-color: rgb(117, 84, 84);
+        }
+        #labal1{
+            display: none;
+            justify-content: center;
+        } #labal2{
+            display: none;
+            justify-content: center;
+        } #labal3{
+            display: none;
+            justify-content: center;
+        } #labal4{
+            display: none;
+            justify-content: center;
+        }
+     #labal5{
+            display: none;
+            justify-content: center;
+        }
+    
+        .labal{
+            color:darkgreen;
+            font-size: 20px;
+            
+        }
+        #result{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            font-size: 18px;
+            color: darkmagenta;
+        }
+       input{
+           width: 40px;
+           height: 27px;
+        }
+        #notice{
+            color: red;
+font-size: 20px;
+        }
+        .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav span {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav span:hover {
+  color:red;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+button{
+    cursor: pointer;
+  border-radius: 16px;
+}
+#header2{
+color: red;
+font-size: 25px;
+}
+#menu{
+color:maroon;
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- calculation part -->
+    <!-- resultcontainer -->
+    <div id="header"><span style="font-size:30px;cursor:pointer" id = "menu" onclick="openNav()">&#9776;</span>
+        Matrics Calculater  </div>
+        <div id="header2"></div>
+    <div id="notice"></div>
+    <div id="labal1" class = "labal">Enter the order of Matrics</div>
+    <div id="resultcontainer">
+        <input type="number" id="i1" onfocus="this.value=''">
+        <input type="number" id="i2" onfocus="this.value=''">
+
+        <br>
+    </div>
+    <div id="labal2" class = "labal">Enter the order of another Matrics</div>
+    <div id="resultcontainer2">
+        <input type="number" id="i3" onfocus="this.value=''">
+        <input type="number" id="i4" onfocus="this.value=''">
+    </div>
+    <div id="matricsbtn"> <button onclick="go()">Show Matrics</button></div>
+    <!-- matricsdiv -->
+    <div id="labal3" class = "labal">Enter the Elements of Matrics</div>
+    <div id="matricsdiv">
+        <div id="matrics"></div>
+    </div>
+    <!-- matricsdiv2 -->
+    <div id="labal4" class = "labal">Enter the Elements of another Matrics</div>
+    <div id="matricsdiv2">
+        <div id="matrics2"></div>
+    </div><br>
+    <div id="resultbtn">
+        <button onclick="operations()">Show Result</button>
+    </div>
+    <div id="labal5" class = "labal">The Result is :-</div>
+    
+<div id="result"></div>
+    <!-- matricsdiv3 -->
+    <div id="matricsdiv3">
+        <div id="matrics3"></div>
+    </div>
+    <!-- optioncontainer -->
+    <div id="optioncontainer">
+
+        <span class="span" onclick="selectorder(this)" id="addition">Addition</span>
+        <span class="span" onclick="selectorder(this)" id="Subtraction">Subtraction</span>
+        <span class="span" onclick="selectorder(this)" id="multiplication">Multiplication</span>
+        <span class="span" onclick="selectorder(this)" id="transpose">Transpose</span>
+        <span class="span" onclick="selectorder(this)" id="adjoint">Adjoint</span>
+        <span class="span" onclick="selectorder(this)" id="determinant">Determinant</span>
+
+    </div>
+    <!-- side nav html -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <span class="span" onclick="selectorder(this)" id="addition">Addition</span>
+        <span class="span" onclick="selectorder(this)" id="Subtraction">Subtraction</span>
+        <span class="span" onclick="selectorder(this)" id="multiplication">Multiplication</span>
+        <span class="span" onclick="selectorder(this)" id="transpose">Transpose</span>
+        <span class="span" onclick="selectorder(this)" id="adjoint">Adjoint</span>
+        <span class="span" onclick="selectorder(this)" id="determinant">Determinant</span>
+        <span>About:- This webside is design by Satyam Singh for matrics calculation. </span>
+      </div>
+
+    <script>
+        var i;
+        var val1 = document.getElementById("i1");
+        var val2 = document.getElementById("i2");
+        var val3 = document.getElementById("i3");
+        var val4 = document.getElementById("i4");
+        var a111,a112,a113,a114,a121,a122,a123,a124,a131,a1321,a133,a134,a141,a142,a143,a144;
+        
+        var operation;
+
+        function selectorder(per) {
+            operation = per.innerHTML;
+            closeNav();
+
+            document.getElementById("i1").value = "";
+            document.getElementById("i2").value = "";
+            document.getElementById("i3").value = "";
+            document.getElementById("i4").value = "";
+
+            document.getElementById("resultcontainer2").style.display = "none";
+            document.getElementById("labal1").style.display = "none";
+            document.getElementById("labal2").style.display = "none";
+            document.getElementById("labal3").style.display = "none";
+            document.getElementById("labal4").style.display = "none";
+             document.getElementById("labal5").style.display = "none";
+        
+             document.getElementById("resultcontainer").style.display = "none";
+             document.getElementById("notice").innerHTML = "";
+             document.getElementById("matrics").innerHTML = "";
+             document.getElementById("matrics2").innerHTML = "";
+             document.getElementById("matrics3").innerHTML = "";
+             document.getElementById("resultbtn").style.display = "none";
+             document.getElementById("result").innerHTML = "";
+             document.getElementById("header2").innerHTML = operation;
+
+
+            
+            console.log(operation);
+            document.getElementById("optioncontainer").style.display = "none";
+            if (operation == "Addition" || operation == "Subtraction") {
+              
+                document.getElementById("labal1").style.display = "flex";
+                document.getElementById("matricsbtn").style.display = "flex";
+                document.getElementById("resultcontainer").style.display = "flex";
+                
+            }else if(operation == "Multiplication"){
+                document.getElementById("notice").innerHTML = "Notice:- Column of First matrics & Row of Second matrics must be same."
+                document.getElementById("matricsbtn").style.display = "flex";
+                document.getElementById("resultcontainer").style.display = "flex";
+                document.getElementById("resultcontainer2").style.display = "flex";
+                  document.getElementById("labal1").style.display = "flex";
+                  document.getElementById("labal2").style.display = "flex";
+                   
+            }else if(operation == "Determinant"){
+                document.getElementById("notice").innerHTML = "Notice:- Row & Column must be same."
+                document.getElementById("labal3").style.display = "none";
+                document.getElementById("matricsbtn").style.display = "flex";
+                document.getElementById("resultcontainer").style.display = "flex";
+                document.getElementById("labal1").style.display = "flex";
+            }else if(operation == "Adjoint"){
+                document.getElementById("notice").innerHTML = "Notice:- Row & Column must be same."
+                document.getElementById("matricsbtn").style.display = "flex";
+                document.getElementById("resultcontainer").style.display = "flex";
+                document.getElementById("labal1").style.display = "flex";
+            }else if(operation == "Transpose"){
+              
+                document.getElementById("matricsbtn").style.display = "flex";
+                document.getElementById("resultcontainer").style.display = "flex";
+                document.getElementById("labal1").style.display = "flex";
+            }else{
+                  console.log("else");
+            }
+        }
+        function operations(){
+            document.getElementById("matrics3").innerHTML = "";
+            document.getElementById("labal5").style.display = "flex";
+
+        a111   = document.getElementById("111");
+        a112  = document.getElementById("112");
+        a113  = document.getElementById("113");
+        a114  = document.getElementById("114");
+        a121  = document.getElementById("121");
+        a122  = document.getElementById("122");
+        a123  = document.getElementById("123");
+        
+        a124  = document.getElementById("124");
+        a131  = document.getElementById("131");
+        a132  = document.getElementById("132");
+        a133  = document.getElementById("133");
+        a134  = document.getElementById("134");
+        a141  = document.getElementById("141");
+        a142  = document.getElementById("142");
+        a143  = document.getElementById("143");
+        a144  = document.getElementById("144");
+            if (operation == "Addition") {
+                add_sub('+');
+            }else if(operation == "Subtraction"){
+                add_sub('-');
+            }else if(operation == "Multiplication"){
+                multiplication();
+            }else if(operation == "Determinant" & val1.value =="2"){
+                
+               
+               
+                document.getElementById("result").innerHTML = determinant1(a111.value,a112.value,a121.value,a122.value);
+            }else if(operation == "Determinant" & val1.value =="3"){
+                document.getElementById("result").innerHTML = determinant2(a111.value,a112.value,a113.value,a121.value,a122.value,a123.value,a131.value,a132.value,a133.value);
+            }else if(operation == "Determinant" & val1.value =="4"){
+                document.getElementById("result").innerHTML = determinant3(a111.value,a112.value,a113.value,a114.value,a121.value,a122.value,a123.value,a124.value,a131.value,a132.value,a133.value,a134.value,a141.value,a142.value,a143.value,a144.value);
+            }else if(operation == "Adjoint" & val1.value =="2"){
+             adjoint1();
+            }else if(operation == "Adjoint" & val1.value =="3"){
+              adjoint2(a111.value,a112.value,a113.value,a121.value,a122.value,a123.value,a131.value,a132.value,a133.value);
+            }else if(operation == "Transpose"){
+                transpose();
+            }else {
+                console.log("operationelse");
+        }
+    }
+        function go() {
+
+if (operation == "Multiplication" & i2.value!=i3.value) {
+    return
+}
+else if((operation == "Adjoint" || operation == "Determinant") & ((i1.value != i2.value) || (i.value > 3))){
+    return
+}else{
+    console.log("conlog");
+}
+
+            document.getElementById("matrics").innerHTML = "";
+            document.getElementById("matrics2").innerHTML = "";
+            document.getElementById("labal3").style.display = "flex";
+            document.getElementById("matricsdiv").style.display = "flex";
+                document.getElementById("matricsdiv2").style.display = "flex";
+                document.getElementById("resultbtn").style.display = "flex";
+
+
+
+
+            // matrics 1**********************
+            for (i = 1; i <= val1.value; i++) {
+                for (let j = 1; j <= document.getElementById("i2").value; j++) {
+
+                    var node = document.createElement("input");
+                    node.id = 100 + i * 10 + j;
+                    document.getElementById("matrics").appendChild(node);
+                }
+                var br = document.createElement("br");
+                document.getElementById("matrics").appendChild(br);
+            }
+            // matrics 2**********************
+            if(operation == "Addition" || operation == "Subtraction"){
+               
+                document.getElementById("labal4").style.display = "flex";
+                for (i = 1; i <= val1.value; i++) {
+                for (let j = 1; j <= val2.value; j++) {
+
+                    var node = document.createElement("input");
+                    node.id = 200 + i * 10 + j;
+                    document.getElementById("matrics2").appendChild(node);
+                }
+                var br = document.createElement("br");
+                document.getElementById("matrics2").appendChild(br);
+            }
+            }else if(operation == "Multiplication"){
+               
+                document.getElementById("labal4").style.display = "flex";
+                for (i = 1; i <= val3.value; i++) {
+                for (let j = 1; j <= val4.value; j++) {
+
+                    var node = document.createElement("input");
+                    node.id = 200 + i * 10 + j;
+                    document.getElementById("matrics2").appendChild(node);
+                }
+                var br = document.createElement("br");
+                document.getElementById("matrics2").appendChild(br);
+            }
+            }else{
+                console.log("goelse");
+            }
+            if(val1.value != val2.value & operation == "Determinant"){
+                document.getElementById("matricsdiv").style.display = "none";
+                document.getElementById("resultbtn").style.display = "none";
+            }else{
+                console.log("go2else");
+            }
+          
+        }
+
+// adddion & substraction funtion
+        function add_sub(par){
+                    // result matrics
+                    for (k = 1; k <= document.getElementById("i1").value; k++) {
+            for (let l = 1; l <= document.getElementById("i2").value; l++) {
+
+                var node = document.createElement("input");
+            node.id = 300+k*10 + l;
+            document.getElementById("matrics3").appendChild(node);
+            }
+            var br = document.createElement("br");
+         document.getElementById("matrics3").appendChild(br);
+        } 
+         // calculation
+            for (let index = 1; index <= val1.value; index++) {
+
+                for (let indexs = 1; indexs <= val2.value; indexs++) {
+
+                    // calculation
+                   var num = document.getElementById(100+index*10 + indexs).value;
+                   var num2 = document.getElementById(200+index*10 + indexs).value;
+                  var sum = eval(Number(num) + (par) + Number(num2));
+                   console.log(sum);
+                   document.getElementById(300+index*10 + indexs).value =sum;
+                }
+            }
+        }
+        // multiplication function
+        var mul_sum;
+     function multiplication(){
+        mul_sum = 0;
+ // result matrics
+ for (k = 1; k <= i1.value; k++) {
+            for (let l = 1; l <= i4.value; l++) {
+
+                var node = document.createElement("input");
+            node.id = 400+k*10 + l;
+            document.getElementById("matrics3").appendChild(node);
+            }
+            var br = document.createElement("br");
+         document.getElementById("matrics3").appendChild(br);
+        } 
+        //  calculation
+         for (let i = 1; i <= i1.value; i++) {
+             for (let j = 1; j <= i4.value; j++) {
+                 for (let k = 1; k <= i2.value; k++) {
+                    var num = document.getElementById(100+i*10 + k).value;
+                   var num2 = document.getElementById(200+k*10 + j).value;
+                   var sum = eval(Number(num) * Number(num2));
+                    mul_sum +=  sum;
+                 }
+
+                 document.getElementById(400+i*10 + j).value = mul_sum;
+                 mul_sum =  0;
+             }
+             
+         }
+     }
+    //  determinant
+    function determinant1(a,b,c,d){
+        var sum = eval(Number(a) * Number(d)-Number(b) * Number(c));  
+        return sum
+    }
+    function determinant2(a,b,c,d,e,f,g,h,i){
+        var sum = eval(Number(a)*determinant1(e,f,h,i)-Number(b)*determinant1(d,f,g,i)+Number(c)*determinant1(d,e,g,h)); 
+        return sum
+    }
+   function determinant3(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p){
+    var sum = eval(Number(a)*determinant2(f,g,h,j,k,l,n,o,p)-Number(b)*determinant2(e,g,h,i,k,l,m,o,p)+Number(c)*determinant2(e,f,h,i,j,l,m,n,p)-Number(d)*determinant2(e,f,g,i,j,k,m,n,o));
+    return sum
+   }
+   function adjoint1(){
+    // result matrics
+ for (k = 1; k <= i1.value; k++) {
+            for (let l = 1; l <= i1.value; l++) {
+
+                var node = document.createElement("input");
+            node.id = 500+k*10 + l;
+            document.getElementById("matrics3").appendChild(node);
+            }
+            var br = document.createElement("br");
+         document.getElementById("matrics3").appendChild(br);
+        } 
+
+  for (k = 1; k <= i1.value; k++) {
+            for (let l = 1; l <= i1.value; l++) {
+                document.getElementById(500+k*10 + l).value =Math.pow( -1 ,k+l) * document.getElementById(100+l*10 + k).value;
+       
+            }
+ 
+        }                                                                          
+
+   }
+
+ function adjoint2(a,b,c,d,e,f,g,h,i){
+    for (let k = 1; k <= i1.value; k++) {
+            for (let l = 1; l <= i1.value; l++) {
+
+                var node = document.createElement("input");
+            node.id = 500+k*10 + l;
+            document.getElementById("matrics3").appendChild(node);
+            }
+            var br = document.createElement("br");
+         document.getElementById("matrics3").appendChild(br);
+        } 
+        document.getElementById(511).value =  determinant1(e,f,h,i);
+        document.getElementById(521).value = - determinant1(d,f,g,i);
+        document.getElementById(531).value =  determinant1(d,e,g,h);
+        document.getElementById(512).value = - determinant1(b,c,h,i);
+        document.getElementById(522).value =  determinant1(a,c,g,i);
+        document.getElementById(532).value = - determinant1(a,b,g,h);
+        document.getElementById(513).value =  determinant1(b,c,e,f);
+        document.getElementById(523).value = - determinant1(a,c,d,f);
+        document.getElementById(533).value =  determinant1(a,b,d,e);
+        
+ }
+ function transpose(){
+    for (let k = 1; k <= i2.value; k++) {
+            for (let l = 1; l <= i1.value; l++) {
+
+                var node = document.createElement("input");
+            node.id = 600+k*10 + l;
+            document.getElementById("matrics3").appendChild(node);
+            }
+            var br = document.createElement("br");
+         document.getElementById("matrics3").appendChild(br);
+        } 
+        for (let k = 1; k <= i2.value; k++) {
+            for (let l = 1; l <= i1.value; l++) {
+                document.getElementById(600+k*10 + l).value = document.getElementById(100+l*10 + k).value;
+            }
+         
+        } 
+ }
+ 
+//    side nav js
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+   
+
+    </script>
+</body>
+
+</html>
